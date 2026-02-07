@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shounak Chakraborty | Finance Research</title>
+    <style>
+        :root {
+            --nus-blue: #003D7C;
+            --nus-orange: #EF7C00;
+            --text-dark: #333;
+            --bg-light: #fdfdfd;
+            --light-grey: #eef2f7;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation Band */
+        nav {
+            background-color: var(--nus-blue);
+            padding: 0.8rem 0;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 25px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        nav a:hover { color: var(--nus-orange); }
+
+        /* Home Section */
+        .home-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px; 
+            gap: 50px;
+        }
+
+        .profile-image img {
+            width: 320px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Spacing for Name and Title */
+        .profile-text h1 { font-size: 3rem; margin: 0 0 5px 0; color: var(--nus-blue); }
+        .profile-text h2 { font-size: 1.4rem; color: #555; font-weight: 400; margin: 0; }
+        .profile-text .university { font-size: 1.2rem; color: #777; margin: 0; }
+
+        /* Research Interests Band */
+        .interests-band {
+            margin-top: 20px;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+        }
+        .interests-band strong { color: var(--nus-blue); text-transform: uppercase; font-size: 0.9rem; }
+        .interests-band p { margin: 5px 0; font-size: 1rem; color: #444; }
+
+        /* Action Buttons and Expanding Ribbon */
+        .action-links {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: fit-content;
+        }
+
+        .button-row { display: flex; gap: 15px; }
+
+        .btn {
+            text-decoration: none;
+            color: var(--nus-blue);
+            font-weight: bold;
+            border: 2px solid var(--nus-blue);
+            padding: 8px 25px;
+            border-radius: 4px;
+            transition: 0.3s;
+            cursor: pointer;
+            background: white;
+            font-size: 1rem;
+        }
+
+        .btn:hover, .btn.active { background: var(--nus-blue); color: white; }
+
+        #contact-ribbon {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.3s ease;
+            background: #f8fafc;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        #contact-ribbon.open {
+            max-height: 250px;
+            padding: 20px;
+            border-left: 4px solid var(--nus-blue);
+        }
+
+        .contact-item { display: flex; align-items: center; margin-bottom: 12px; font-size: 0.95rem; }
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            object-fit: contain;
+        }
+        .contact-item a { color: var(--nus-blue); text-decoration: none; font-weight: 500; }
+
+        /* Enhanced Section Styles */
+        .section { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 80px 20px; 
+            border-top: 1px solid #eee; 
+        }
+
+        .section-header {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--nus-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            display: inline-block;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--nus-orange);
+            border-radius: 2px;
+        }
+
+        .section-header::before {
+            content: 'EXPLORATION';
+            position: absolute;
+            top: -15px;
+            left: -5px;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: rgba(0, 61, 124, 0.00);
+            z-index: -1;
+            letter-spacing: 5px;
+        }
+        
+        /* Grey Ribbon for Working Papers */
+        .ribbon {
+            background: var(--light-grey);
+            color: #555;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .paper-title { font-size: 1.4rem; color: var(--nus-blue); font-weight: bold; display: block; margin-bottom: 5px; }
+
+        /* Musings Preview Card */
+        .preview-card {
+            background: var(--light-grey);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .home-container { flex-direction: column; text-align: center; align-items: center; }
+            .button-row { justify-content: center; }
+            .section-header::before { font-size: 2.5rem; top: -10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#research">Research</a>
+        <a href="musings.html">Musings</a>
+    </nav>
+
+    <main class="home-container" id="home">
+        <div class="profile-image">
+            <img src="shounak.jpg" alt="Shounak Chakraborty">
+        </div>
+
+        <div class="profile-text">
+            <h1>Shounak Chakraborty</h1>
+            <h2>PhD Student, Finance</h2>
+            <p class="university">National University of Singapore (NUS)</p>
+
+            <div class="interests-band">
+                <strong>Research Interests</strong>
+                <p>Banking Networks, Monetary Policy, Systemic Risk, and Asset Pricing.</p>
+            </div>
+
+            <div class="action-links">
+                <div class="button-row">
+                    <a href="CV.pdf" class="btn" target="_blank">CV</a>
+                    <button class="btn" onclick="toggleContact()" id="contactBtn">Contact</button>
+                </div>
+                
+                <div id="contact-ribbon">
+                    <div class="contact-item">
+                        <img src="email-icon.png" alt="Email" class="contact-icon">
+                        <a href="mailto:shounak@u.nus.edu">shounak@u.nus.edu</a>
+                    </div>
+                    <div class="contact-item">
+                        <img src="linkedin-icon.png" alt="LinkedIn" class="contact-icon">
+                        <a href="https://www.linkedin.com/in/shounakchakraborty49/" target="_blank">Shounak Chakraborty</a>
+                    </div>
+                    <div class="contact-item">
+                        <img src="phone-icon.png" alt="Phone" class="contact-icon">
+                        <span>+65 86551752</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="section" id="research">
+        <div class="section-header">
+            <h2>Research</h2>
+        </div>
+        
+        <div style="margin-bottom: 40px;">
+            <div class="ribbon">Working Paper</div>
+            <span class="paper-title">Local catastrophes and size anomaly in the price of US banking stocks</span>
+            <p>Explaining size anomalies in US bank stock pricing during local catastrophes and presenting a model for investor-led bank runs.</p>
+        </div>
+
+        <div style="margin-bottom: 40px;">
+            <div class="ribbon">Working Paper</div>
+            <span class="paper-title">Natural disasters and a model for risk spillover in a banking network</span>
+            <p>A dynamic model for risk spillover in national banking networks after natural disasters, utilizing data from 38 Indian banks.</p>
+        </div>
+
+        <div style="margin-bottom: 40px;">
+            <div class="ribbon">Working Paper</div>
+            <span class="paper-title">Benchmarking the spot price of gold in India using a Hidden Markov Model approach</span>
+            <p>Quantifying speculative price-setting in oligopolistic gold markets using a Hidden Markov Model (HMM) approach.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <h2>Musings</h2>
+        </div>
+        <p>A collection of my thoughts on the intersection of finance, climate, and creative writing.</p>
+        <div class="preview-card">
+            <strong style="color: var(--nus-blue);">LATEST FROM MUSINGS:</strong>
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li>Dewdrops on Leaves</li>
+                <li>Footsteps Inside a Pantheon</li>
+            </ul>
+            <a href="musings.html" style="color: var(--nus-orange); font-weight: bold; text-decoration: none; font-size: 0.9rem;">View all writings →</a>
+        </div>
+    </section>
+
+    <script>
+        function toggleContact() {
+            const ribbon = document.getElementById('contact-ribbon');
+            const btn = document.getElementById('contactBtn');
+            ribbon.classList.toggle('open');
+            btn.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>

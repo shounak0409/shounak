@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musings | Shounak Chakraborty</title>
+    <style>
+        :root {
+            --nus-blue: #003D7C;
+            --nus-orange: #EF7C00;
+            --text-dark: #333;
+            --bg-light: #fdfdfd;
+            --light-grey: #eef2f7;
+            --creative-serif: 'Georgia', serif;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+
+        /* Navigation Band */
+        nav {
+            background-color: var(--nus-blue);
+            padding: 0.8rem 0;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 25px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        nav a:hover { color: var(--nus-orange); }
+
+        /* Main Section */
+        .section { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 80px 20px; 
+        }
+
+        .section-header {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--nus-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            display: inline-block;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--nus-orange);
+            border-radius: 2px;
+        }
+
+        .section-header::before {
+            content: 'REFLECTIONS';
+            position: absolute;
+            top: -15px;
+            left: -5px;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: rgba(0, 61, 124, 0.04);
+            z-index: -1;
+            letter-spacing: 5px;
+        }
+
+        /* Category Sub-headers */
+        h3 {
+            color: var(--nus-blue);
+            margin-top: 60px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* --- NON-FICTION SECTION (Matches Index Page) --- */
+        .non-fiction-item {
+            margin-bottom: 40px;
+        }
+
+        .ribbon {
+            background: var(--light-grey);
+            color: #555;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .article-title {
+            font-size: 1.4rem;
+            color: var(--nus-blue);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            text-decoration: none;
+        }
+        .article-title:hover { text-decoration: underline; }
+
+        /* --- CREATIVE WRITING SECTION (New Aesthetic) --- */
+        .creative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .creative-card {
+            background: white;
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 2px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .creative-card:hover {
+            border-color: var(--nus-orange);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+        }
+
+        .creative-card span {
+            font-family: var(--creative-serif);
+            font-size: 1.25rem;
+            color: #444;
+            font-style: italic;
+        }
+
+        .creative-card::before {
+            content: '✒';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #ddd;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .section-header::before { font-size: 2.5rem; }
+            .creative-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#research">Research</a>
+        <a href="#">Musings</a>
+    </nav>
+
+    <section class="section">
+        <div class="section-header">
+            <h2>Musings</h2>
+        </div>
+
+        <h3>Non-fiction Writings</h3>
+        
+        <div class="non-fiction-item">
+            <div class="ribbon">Article</div>
+            <a href="non-fiction/The_Bridge_Between_Finance_and_Climate.pdf" class="article-title">The Bridge Between Finance and Climate</a>
+            <p style="color: #666; font-size: 0.95rem;">Exploring the intersection of structural financial networks and evolving climate-related risks.</p>
+        </div>
+
+        <h3>Creative Writing</h3>
+        
+        <div class="creative-grid">
+            <a href="Creative/Dewdrops on Leaves.pdf" target="_blank" class="creative-card">
+                <span>Dewdrops on Leaves</span>
+            </a>
+            
+            <a href="Creative/Eulogy for Love.pdf" target="_blank" class="creative-card">
+                <span>Eulogy for Love</span>
+            </a>
+            
+            <a href="Creative/Footsteps Inside a Pantheon.pdf" target="_blank" class="creative-card">
+                <span>Footsteps Inside a Pantheon</span>
+            </a>
+        </div>
+    </section>
+
+</body>
+</html>
